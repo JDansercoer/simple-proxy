@@ -28,13 +28,19 @@ function cookiesToString(req) {
 }
 
 app.post("/*", (req, res) => {
+  const headers = {
+    "Content-Type": "application/json",
+    Cookie: cookiesToString(req)
+  };
+
+  if (req.headers && req.headers.authorization) {
+    headers.Authorization = req.headers.authorization;
+  }
+
   axios({
     method: "post",
     url: req.originalUrl.slice(1),
-    headers: {
-      "Content-Type": "application/json",
-      Cookie: cookiesToString(req)
-    },
+    headers,
     data: req.body,
     withCredentials: true
   })
@@ -47,14 +53,19 @@ app.post("/*", (req, res) => {
 });
 
 app.put("/*", (req, res) => {
-  cookiesToString(req);
+  const headers = {
+    "Content-Type": "application/json",
+    Cookie: cookiesToString(req)
+  };
+
+  if (req.headers && req.headers.authorization) {
+    headers.Authorization = req.headers.authorization;
+  }
+
   axios({
     method: "put",
     url: req.originalUrl.slice(1),
-    headers: {
-      "Content-Type": "application/json",
-      Cookie: cookiesToString(req)
-    },
+    headers,
     data: req.body,
     withCredentials: true
   })
@@ -67,7 +78,6 @@ app.put("/*", (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  cookiesToString(req);
   axios({
     method: "get",
     url: req.originalUrl.slice(1),
