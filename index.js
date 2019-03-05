@@ -37,9 +37,13 @@ app.post("/*", (req, res) => {
     },
     data: req.body,
     withCredentials: true
-  }).then(response => {
-    res.send(response.data);
-  });
+  })
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(function(error) {
+      console.log("Error", error.message);
+    });
 });
 
 app.put("/*", (req, res) => {
@@ -53,9 +57,13 @@ app.put("/*", (req, res) => {
     },
     data: req.body,
     withCredentials: true
-  }).then(response => {
-    res.send(response.data);
-  });
+  })
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(function(error) {
+      console.log("Error", error.message);
+    });
 });
 
 app.get("/*", (req, res) => {
@@ -69,9 +77,13 @@ app.get("/*", (req, res) => {
     },
     data: req.body,
     withCredentials: true
-  }).then(response => {
-    res.send(response.data);
-  });
+  })
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(function(error) {
+      console.log("Error", error.message);
+    });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
