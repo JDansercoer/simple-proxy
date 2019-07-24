@@ -48,7 +48,10 @@ app.post("/*", (req, res) => {
       res.send(response.data);
     })
     .catch(function(error) {
+      res.status(error.response.status).send(error.response.data);
       console.log("Error", error.message);
+      console.log(error.response.data);
+      console.log(error.response.status);
     });
 });
 
@@ -73,7 +76,10 @@ app.put("/*", (req, res) => {
       res.send(response.data);
     })
     .catch(function(error) {
+      res.status(error.response.status).send(error.response.data);
       console.log("Error", error.message);
+      console.log(error.response.data);
+      console.log(error.response.status);
     });
 });
 
@@ -92,7 +98,10 @@ app.get("/*", (req, res) => {
       res.send(response.data);
     })
     .catch(function(error) {
+      res.status(error.response.status).send(error.response.data);
       console.log("Error", error.message);
+      console.log(error.response.data);
+      console.log(error.response.status);
     });
 });
 
